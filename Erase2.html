@@ -1,0 +1,98 @@
+
+
+ <!DOCTYPE html>
+<html>
+<body onload="start()">
+
+<div id="a"></div>
+
+<input type="text" size="50" onkeydown="keyCode(event)"> 
+<canvas id="myCanvas" width="1000" height="600">
+
+<script>
+
+	var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+	 var x_rect=300;//x position of rectangle
+	 var y_rect=550;//y position of rectangle
+	 var x_obst=1000;//x position of the rectangle
+	 var y_obst=500;//y position of the rectangle
+	 var obst_height=100;
+	 var obst_width=50;
+      var t_background=300;
+	  
+	  
+     //variation of graphics
+	 //******************
+	 //******************
+	 //******************
+	 function start()//for background variation
+      {
+	  setInterval(background,t_background);
+      }
+	  
+
+	  //*****************
+	  //*****************
+	  //End of graphics variation
+	  //############
+	  //###########
+	  //Start of Designing graphics
+	  //**************
+	  //**************
+	  //for background designing and variation of ractangle
+	  function background()
+	  {
+		ctx.fillStyle="black";
+        ctx.fillRect(0,0,1000,600);
+		rectangle();
+		obstacle();
+		aler();
+		document.getElementById("a").innerHTML=y_rect;
+		x_rect=300;
+		y_rect=550;
+	  }
+	  //for rect designing
+	   function rectangle()
+	  {
+	    if(y_rect<=290)
+		y_rect=550;
+		ctx.fillStyle="red";
+        ctx.fillRect(x_rect,y_rect,10,50);
+	  }
+	  
+	  function obstacle()
+	  {
+		x_obst=x_obst-1;
+		ctx.fillStyle="yellow";
+        ctx.fillRect(x_obst,y_obst,obst_width,obst_height);
+		if(x_obst<=obst_width)
+			{
+				x_obst=1000;
+			}
+	  }
+	  function aler()
+	  {
+		if((y_rect+50>=y_obst) && ((x_rect+10 >= x_obst) && (x_rect<=x_obst+obst_width)) )
+		alert("Game Over");
+	  }
+	  
+	 
+	
+   
+    
+    
+function keyCode(event)//for key event
+ {
+  var i = event.keyCode;
+	  if(i==38)//Upper Arrow
+	  {
+		y_rect=y_rect-250;		
+	  }
+  }
+
+
+</script>
+
+</body>
+</html>
